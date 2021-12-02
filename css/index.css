@@ -1,0 +1,306 @@
+/* 初始化样式 */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    border: 0;
+    /* outline: 0; */
+    cursor: pointer;
+}
+
+/* ::before, ::after {
+    content: '';
+} */
+
+/* header 部分样式开始 */
+#header {
+    width: 100vw;
+    height: 80px;
+    padding: 0 10vw;
+    box-sizing: border-box;
+    background-color: rgb(249,249,249);
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    /* 均匀排列每个元素,首个元素放置于起点，末尾元素放置于终点 */
+    justify-content: space-between;
+    /* 弹性盒子元素在该行的侧轴（纵轴）上居中放置。 */
+    align-items: center;
+    /* 固定定位头部 */
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+.logo {
+    width: 70px;
+    height: 100%;
+    /* background-color、background-position、background-size、background-repeat、background-origin、background-clip、background-attachment 和 background-image。 */
+    background-image: url('../img/logo.png');
+    /* cover	此时会保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小contain 此时会保持图像的纵横比并将图像缩放成将适合背景定位区域的最大大小。 */
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-position属性设置背景图像的起始位置。 */
+    background-position: center;
+}
+
+nav {
+    display: flex;
+    /* 弹性盒子元素在该行的侧轴（纵轴）上居中放置。 */
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav li {
+    /* 不设置行高的话，伪元素不会在整个nav的最下面 */
+    line-height: 80px;
+    padding: 0 1.2vw;
+    /* 因为待会要设置伪元素 */
+    position: relative;
+}
+
+nav li a {
+    color: #777;
+}
+
+/* 下划线，利用伪元素选择器 after 来制作 */
+nav li::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    background-color: #222;
+    transition: .8s linear;
+}
+
+
+nav li:hover::after {
+    width: 100%;
+}
+
+/* 汉堡按钮 */
+nav button {
+    width: 50px;
+    height: 50px;
+    background: url('../img/btn.png') center no-repeat;
+    display: none;
+}
+
+/* header 部分样式结束 */
+
+/* 轮播图样式开始 */
+#pic {
+    width: 100vw;
+    height: 70vh;
+    /* 不设置相对定位，设置#pic ul 的 left和margin-left无效 */
+    position: relative;
+    /* outline: 1px solid red; */
+    /* 设置这个属性，其余的li标签才不会自动占据下面的行 
+    当然这个overflow: hidden;设置给
+    */
+    overflow: hidden;
+    margin-top: 80px;
+}
+#pic ul {
+    width: 300vw;
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    /* 这是设置绝对定位，是相对于#pic的 */
+    position: absolute;
+    left: 0;
+    transition: all 1s;
+}
+
+#pic li{
+    width: 100vw;
+    height: 100%;
+}
+
+#pic li:nth-child(1){
+    background-image: url('../img/1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    /* 这里能用cover,不能用contain，会显示不全 */
+    /* background: url('../img/1.jpg')  cover no-repeat; */
+    /* background: url('../img/1.jpg') center/cover no-repeat; */
+}
+
+#pic li:nth-child(2){
+    background: url('../img/2.jpg') center/cover no-repeat;
+}
+
+#pic li:nth-child(3){
+    background: url('../img/3.jpg') center/cover no-repeat;
+}
+
+/* 轮播图样式结束 */
+
+/* 热销项目样式开始 */
+
+#project {
+    margin: 50px 0;
+    /* 这个容器中无论标题，还是每个项目块，文字都是居中的 */
+    text-align: center;
+}
+
+.title {
+    margin-bottom: 20px;
+    color: #bbb;
+}
+
+.title h2 {
+    font-size: 36px;
+    font-weight: 100;
+}
+
+/* 项目列表容器 */
+.list {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/* 项目列表中的项目 */
+.list>div {
+    /* 这里设置的这个margin和padding不能超过整个容器的大小
+    无论是在各种设备下 */
+    margin: 15px 0;
+    padding: 20px 10px;
+    border: 1px solid #ddd;
+}
+
+.list img {
+    width: 90%;
+    opacity: .9;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.list img:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.list p {
+    font-weight: 100;
+    margin-top: 10px;
+}
+
+
+/* 热销项目样式结束 */
+
+/* 页尾部分样式开始 */
+#footer {
+    width: 100%;
+    height: 500px;
+    background: url('../img/bottom.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+/* 页尾部分样式结束 */
+
+/* 接下来就是媒体查询相关的代码 */
+
+/* 首先是除了项目列表以外部分的媒体查询 */
+
+@media all and (max-width:768px) {
+    #header {
+        height: 50px;
+    }
+    nav li {
+        line-height: 50px;
+
+    }
+    #pic {
+        height: 50vh;
+        margin-top: 50px;
+    }
+    #footer {
+        height: 400px;
+    }
+}
+
+@media all and (max-width: 576px) {
+    nav button {
+        display: block;
+    }
+    nav ul {
+        height: 0; 
+        top: 25px;
+        overflow: hidden;
+        transition: .5s;
+        /* 需要设置可以换行，这样在面包按钮点击后才会一条一条显示 */
+        flex-wrap: wrap;
+        /* 这个nav并没有彻底消失，在点击之后还会出现 */
+        position: relative;
+        /* top: 150px; */
+    }
+    nav li {
+        width: 100%;
+        background-color: #eee;
+        text-align: center;
+        border-bottom: 1px solid #fff;
+    }
+    nav li::after {
+        bottom: 0;
+    }
+}
+    
+    #pic {
+        height: 40vh;
+    }
+
+    #footer {
+        height: 300px;
+    }
+
+
+/* 最后是项目列表部分的媒体查询代码 */
+@media all and (min-width: 768px){
+    #project .list {
+        width: 720px;
+    }
+    #project .list div {
+        /* 按照.list为720px计算,每个div的width是331.2px
+        加上水平margin:0, 水平padding：20px
+        相当于351px，也是小于720的，所以一行能放2个 */
+        width: 46%;
+    }
+}
+@media all and (min-width:992px) {
+    .project .list {
+        width: 960px;
+    }
+    #project .list nav {
+        width: 30%;
+    }
+}
+
+@media all and (min-width:1200px) {
+    #project .list {
+        width: 1140px;
+    }
+    #project .list div {
+        width: 22%;
+    }
+}
